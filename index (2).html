@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AD Vantage Books — Bookkeeping for Small Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #16294A;
+    --navy-deep: #0E1B30;
+    --powder: #B7D2E0;
+    --powder-light: #E7F0F5;
+    --green: #3E7A5C;
+    --green-deep: #2E5D46;
+    --paper: #FAFBFC;
+    --ink: #1C2530;
+    --ink-soft: #55636F;
+    --line: #DCE4E9;
+    --radius: 6px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Newsreader', serif;
+    font-weight:600;
+    color:var(--navy-deep);
+    margin:0;
+  }
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  section{padding:96px 0;}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,251,252,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
+  .monogram{
+    width:38px; height:38px; border-radius:50%;
+    background:var(--navy);
+    color:var(--powder-light);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px; letter-spacing:0.5px;
+    flex-shrink:0;
+  }
+  .brand-logo{height:40px; width:auto; display:block;}
+  footer .brand-logo{height:32px;}
+  .brand-name{font-family:'Newsreader', serif; font-weight:600; font-size:19px; color:var(--navy-deep);}
+  .brand-name .ad-mark{color:var(--navy-deep); font-weight:700;}
+  .brand-name .vantage-word{color:var(--green-deep);}
+  nav ul{list-style:none; display:flex; gap:36px; margin:0; padding:0;}
+  nav ul a{text-decoration:none; font-size:14.5px; color:var(--ink-soft); font-weight:500; transition:color .15s;}
+  nav ul a:hover{color:var(--navy-deep);}
+  .nav-cta{
+    background:var(--green); color:#fff; padding:10px 20px; border-radius:var(--radius);
+    font-size:14px; font-weight:600; text-decoration:none; white-space:nowrap;
+    transition:background .15s;
+  }
+  .nav-cta:hover{background:var(--green-deep);}
+  .nav-links-wrap{display:flex; align-items:center; gap:36px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:88px 0 96px;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0px, transparent 37px,
+        rgba(22,41,74,0.055) 38px
+      ),
+      var(--paper);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--green-deep); margin-bottom:20px;
+  }
+  .eyebrow::before{content:""; width:18px; height:1px; background:var(--green-deep);}
+  .hero h1{font-size:50px; line-height:1.12; letter-spacing:-0.01em;}
+  .hero h1 em{font-style:italic; color:var(--green-deep);}
+  .hero p.lede{
+    font-size:17.5px; color:var(--ink-soft); max-width:480px; margin:24px 0 34px;
+  }
+  .btn-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--navy); color:#fff; padding:14px 26px; border-radius:var(--radius);
+    text-decoration:none; font-weight:600; font-size:15px; transition:background .15s;
+  }
+  .btn-primary:hover{background:var(--navy-deep);}
+  .btn-ghost{
+    padding:14px 26px; border-radius:var(--radius); border:1px solid var(--line);
+    text-decoration:none; font-weight:600; font-size:15px; color:var(--navy-deep);
+    transition:border-color .15s, background .15s;
+  }
+  .btn-ghost:hover{border-color:var(--navy); background:#fff;}
+
+  /* Signature ledger-balance graphic */
+  .ledger-card{
+    background:#fff; border:1px solid var(--line); border-radius:10px;
+    padding:28px 30px; box-shadow:0 24px 48px -28px rgba(16,34,64,0.28);
+  }
+  .ledger-card .cap{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft);
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:18px; display:block;
+  }
+  .ledger-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:10px 0; border-bottom:1px dashed var(--line);
+    font-family:'IBM Plex Mono', monospace; font-size:14.5px; color:var(--ink);
+  }
+  .ledger-row:last-of-type{border-bottom:none;}
+  .ledger-row .amt{color:var(--ink-soft);}
+  .balance-bar{
+    margin-top:22px; padding-top:18px; border-top:1px solid var(--navy);
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .balance-bar .label{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--navy-deep); font-weight:500;}
+  .balance-pill{
+    display:flex; align-items:center; gap:7px;
+    background:var(--powder-light); color:var(--green-deep);
+    padding:6px 13px; border-radius:20px; font-size:12.5px; font-weight:600;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .balance-pill .dot{
+    width:7px; height:7px; border-radius:50%; background:var(--green);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1; transform:scale(1);}
+    50%{opacity:.45; transform:scale(0.8);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .balance-pill .dot{animation:none;}
+  }
+
+  /* ---------- Services ---------- */
+  .section-head{max-width:600px; margin-bottom:52px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:34px; letter-spacing:-0.01em;}
+  .section-head p{color:var(--ink-soft); font-size:16px; margin-top:14px;}
+
+  .services-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  }
+  .service-card{
+    background:#fff; padding:34px 26px; transition:background .15s;
+  }
+  .service-card:hover{background:var(--powder-light);}
+  .service-card .num{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--green-deep);
+    margin-bottom:20px; display:block;
+  }
+  .service-card h3{font-size:18px; margin-bottom:10px; font-weight:600;}
+  .service-card p{font-size:14.5px; color:var(--ink-soft); margin:0;}
+
+  /* ---------- Process ---------- */
+  .process{background:var(--navy-deep); color:var(--powder-light);}
+  .process .section-head h2{color:#fff;}
+  .process .section-head p{color:#9FB3C4;}
+  .process .eyebrow{color:var(--powder);}
+  .process .eyebrow::before{background:var(--powder);}
+  .steps{display:grid; grid-template-columns:repeat(5,1fr); gap:24px;}
+  .step{border-top:2px solid rgba(183,210,224,0.25); padding-top:20px;}
+  .step .step-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--powder); display:block; margin-bottom:14px;}
+  .step h4{font-family:'Newsreader',serif; font-size:17px; font-weight:600; color:#fff; margin-bottom:8px;}
+  .step p{font-size:13.5px; color:#9FB3C4; margin:0;}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:center;}
+  .about-photo{
+    aspect-ratio:4/5; border-radius:10px;
+    background:linear-gradient(160deg, var(--powder) 0%, var(--powder-light) 100%);
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line);
+  }
+  .about-photo .monogram{
+    width:96px; height:96px; font-size:30px; background:var(--navy);
+  }
+  .about-logo-icon{width:58%; height:auto;}
+  .about-copy p{color:var(--ink-soft); font-size:16px; margin-bottom:18px;}
+  .about-copy p:first-of-type{font-size:19px; color:var(--ink); font-family:'Newsreader', serif; font-style:italic;}
+  .creds{display:flex; gap:28px; margin-top:28px; flex-wrap:wrap;}
+  .creds div{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--navy-deep);}
+  .creds div span{display:block; color:var(--ink-soft); font-size:12px; margin-top:3px;}
+
+  /* ---------- Testimonials ---------- */
+  .testimonials{background:var(--powder-light);}
+  .t-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .t-card{
+    background:#fff; border:1px solid var(--line); border-radius:10px; padding:30px;
+  }
+  .t-card p{font-size:15px; color:var(--ink); margin:0 0 20px; font-style:italic; font-family:'Newsreader', serif;}
+  .t-who{font-size:13.5px; color:var(--ink-soft); font-weight:600;}
+  .t-who span{display:block; font-weight:400; color:var(--ink-soft); font-size:12.5px; margin-top:2px;}
+
+  /* ---------- Contact CTA ---------- */
+  .cta-band{
+    background:var(--navy); color:#fff; text-align:center; padding:80px 0;
+  }
+  .cta-band h2{color:#fff; font-size:32px; margin-bottom:16px;}
+  .cta-band p{color:var(--powder); max-width:480px; margin:0 auto 32px; font-size:16px;}
+  .cta-band .btn-primary{background:var(--green);}
+  .cta-band .btn-primary:hover{background:var(--green-deep);}
+
+  /* ---------- Footer ---------- */
+  footer{padding:44px 0; border-top:1px solid var(--line);}
+  .foot-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  .foot-grid .brand-name{font-size:16px;}
+  footer .foot-links{display:flex; gap:24px; list-style:none; padding:0; margin:0;}
+  footer .foot-links a{text-decoration:none; color:var(--ink-soft); font-size:13.5px;}
+  footer .fine{color:var(--ink-soft); font-size:12.5px; margin-top:20px;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px){
+    nav ul{display:none;}
+    .hero-grid, .about-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:repeat(2,1fr);}
+    .t-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:38px;}
+    section{padding:64px 0;}
+  }
+
+  :focus-visible{outline:2px solid var(--green); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="#top">
+      <img src="logo-full.png" alt="Vantage Books — Bookkeeping & Advisory" class="brand-logo">
+    </a>
+    <div class="nav-links-wrap">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="nav-cta" href="#contact">Book a free consult</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Bookkeeping with an edge</span>
+      <h1>Give your business the <em>AD-Vantage.</em></h1>
+      <p class="lede">Monthly bookkeeping, clean-up, and payroll support built for owners who'd rather run their business than chase receipts. QuickBooks-certified, detail-obsessed, and always one call away.</p>
+      <div class="btn-row">
+        <a class="btn-primary" href="#contact">Book a free consult</a>
+        <a class="btn-ghost" href="#services">See services</a>
+      </div>
+    </div>
+    <div class="ledger-card">
+      <span class="cap">This month, at a glance</span>
+      <div class="ledger-row"><span>Accounts reconciled</span><span class="amt">12 / 12</span></div>
+      <div class="ledger-row"><span>Invoices coded</span><span class="amt">148</span></div>
+      <div class="ledger-row"><span>Reports delivered</span><span class="amt">On time</span></div>
+      <div class="balance-bar">
+        <span class="label">Books balanced</span>
+        <span class="balance-pill"><span class="dot"></span>Debits = Credits</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What I handle</span>
+      <h2>Everything between your bank account and your balance sheet.</h2>
+      <p>Pick one service or hand off the whole back office — most clients start with monthly bookkeeping and add on from there.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="num">01</span>
+        <h3>Monthly Bookkeeping</h3>
+        <p>Bank and credit card reconciliations, transaction coding, and clean financial statements delivered every month.</p>
+      </div>
+      <div class="service-card">
+        <span class="num">02</span>
+        <h3>Clean-Up &amp; Catch-Up</h3>
+        <p>Behind on your books? I'll untangle months (or years) of transactions and get your accounts audit-ready.</p>
+      </div>
+      <div class="service-card">
+        <span class="num">03</span>
+        <h3>Payroll Support</h3>
+        <p>Accurate, on-time payroll processing and filings, so your team gets paid right without the paperwork headache.</p>
+      </div>
+      <div class="service-card">
+        <span class="num">04</span>
+        <h3>QuickBooks Setup &amp; Training</h3>
+        <p>New to QuickBooks? I'll set up your chart of accounts and walk you through it, step by step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How we start</span>
+      <h2>From first call to first report, in five steps.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h4>Discovery call</h4>
+        <p>A free 30-minute conversation about your business and where your books stand today.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h4>Assessment</h4>
+        <p>I review your current records to see what shape they're in and what needs attention.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h4>Proposal</h4>
+        <p>A clear, flat-rate plan with the services, timeline, and pricing spelled out.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <h4>Onboarding</h4>
+        <p>Secure access set up, accounts connected, and any clean-up work scheduled.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">05</span>
+        <h4>Monthly rhythm</h4>
+        <p>Ongoing bookkeeping and reporting, delivered like clockwork every month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo">
+      <img src="logo-icon.png" alt="Vantage Books icon" class="about-logo-icon">
+    </div>
+    <div class="about-copy">
+      <p>"I built AD Vantage Books because a business only has the advantage when its numbers are right — and someone actually keeping an eye on them."</p>
+      <p>AD Vantage Books is a one-person bookkeeping practice built for small businesses and non-profits. I work directly with each client — no hand-offs, no call centers, just someone who knows your numbers.</p>
+      <div class="creds">
+        <div>QuickBooks<span>ProAdvisor Certified</span></div>
+        <div>Response time<span>Under 24 hours</span></div>
+        <div>Clients<span>Small business &amp; non-profit</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Client notes</span>
+      <h2>What it's like to hand off the books.</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card">
+        <p>"I finally stopped dreading tax season. Every report shows up on time, and I actually understand my numbers now."</p>
+        <div class="t-who">Owner, Local Retail Shop<span>Client since 2023</span></div>
+      </div>
+      <div class="t-card">
+        <p>"Took over a year of messy books and had everything reconciled within a month. Genuinely a relief."</p>
+        <div class="t-who">Founder, Design Studio<span>Client since 2024</span></div>
+      </div>
+      <div class="t-card">
+        <p>"Payroll runs itself now. I don't think about it, which is exactly the point."</p>
+        <div class="t-who">Director, Non-Profit<span>Client since 2022</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="wrap">
+    <h2>Let's get your books in order.</h2>
+    <p>Free 30-minute discovery call — no pressure, just a plan for where your books stand and what's next.</p>
+    <a class="btn-primary" href="mailto:hello@advantagebooks.com">Book a free consult</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <a class="brand" href="#top" style="text-decoration:none;">
+      <img src="logo-full.png" alt="Vantage Books — Bookkeeping & Advisory" class="brand-logo">
+    </a>
+    <ul class="foot-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="wrap">
+    <p class="fine">© 2026 AD Vantage Books. Replace this template's placeholder contact details, credentials, and testimonials with your own before publishing.</p>
+  </div>
+</footer>
+
+</body>
+</html>
