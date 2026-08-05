@@ -263,9 +263,23 @@
   }
   .contact-form button:hover{background:var(--green-deep);}
   .form-note{font-size:12.5px; color:var(--ink-soft); margin-top:14px; text-align:center;}
-  .form-success{
-    display:none; background:var(--powder-light); color:var(--navy-deep);
+  .form-success{display:none;}
+  .form-success[data-fs-active]{
+    display:block; background:var(--powder-light); color:var(--navy-deep);
     padding:14px; border-radius:var(--radius); font-size:14px; margin-bottom:18px; text-align:center;
+  }
+  .form-error{display:none;}
+  .form-error[data-fs-active]{
+    display:block; color:#B3261E; font-size:13.5px; margin-bottom:14px; text-align:center;
+  }
+  [data-fs-error]:not(.form-error){
+    display:block; color:#B3261E; font-size:12.5px; margin-top:5px;
+  }
+  .contact-form input[aria-invalid="true"], .contact-form textarea[aria-invalid="true"]{
+    border-color:#B3261E;
+  }
+  button[data-fs-submit-btn]:disabled{
+    opacity:0.6; cursor:not-allowed;
   }
 
   /* ---------- Footer ---------- */
@@ -426,29 +440,39 @@
   <div class="wrap">
     <h2>Let's get your books in order.</h2>
     <p>Free 30-minute discovery call — no pressure, just a plan for where your books stand and what's next.</p>
-    <a class="btn-primary" href="mailto:adavis@advantagebooksct.com">Book a free consult</a>
+    <a class="btn-primary" href="#contact-form" id="scroll-to-form">Book a free consult</a>
 
-    <div class="cta-divider">or send a message</div>
+    <div class="cta-divider">fill out the form below</div>
 
     <form class="contact-form" id="contact-form" action="https://formspree.io/f/xwleejyn" method="POST">
-      <div class="form-success" id="form-success">Thanks — your message is on its way. I'll be in touch within 48 hours.</div>
+      <div class="form-success" data-fs-success>Thanks — your message is on its way. I'll be in touch within 48 hours.</div>
+      <div data-fs-error class="form-error"></div>
       <div class="field">
         <label for="cf-name">Name</label>
-        <input type="text" id="cf-name" name="name" required>
+        <input type="text" id="cf-name" name="name" data-fs-field required>
+        <span data-fs-error="name" class="field-error"></span>
       </div>
       <div class="field">
         <label for="cf-email">Email</label>
-        <input type="email" id="cf-email" name="email" required>
+        <input type="email" id="cf-email" name="email" data-fs-field required>
+        <span data-fs-error="email" class="field-error"></span>
       </div>
       <div class="field">
         <label for="cf-message">Message</label>
-        <textarea id="cf-message" name="message" placeholder="Tell me a bit about your business and what you need help with." required></textarea>
+        <textarea id="cf-message" name="message" data-fs-field placeholder="Tell me a bit about your business and what you need help with." required></textarea>
+        <span data-fs-error="message" class="field-error"></span>
       </div>
-      <button type="submit">Send message</button>
+      <button type="submit" data-fs-submit-btn>Send message</button>
       <p class="form-note">I'll get back to you within 48 hours.</p>
     </form>
   </div>
 </section>
+
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#contact-form', formId: 'xwleejyn' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 <footer>
   <div class="wrap foot-grid">
@@ -469,25 +493,11 @@
 </body>
 <script>
   const form = document.getElementById('contact-form');
-  const successMsg = document.getElementById('form-success');
-  form.addEventListener('submit', async function(e){
+
+  document.getElementById('scroll-to-form').addEventListener('click', function(e){
     e.preventDefault();
-    const data = new FormData(form);
-    try{
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if(res.ok){
-        successMsg.style.display = 'block';
-        form.reset();
-      } else {
-        alert('Something went wrong sending your message — please try the email button above instead.');
-      }
-    } catch(err){
-      alert('Something went wrong sending your message — please try the email button above instead.');
-    }
+    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById('cf-name').focus({ preventScroll: true });
   });
 </script>
 </html>
