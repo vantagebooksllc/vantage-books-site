@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AD Vantage Books — Bookkeeping for Small Business</title>
+<title>Vantage Books — Bookkeeping for Small Business</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -121,7 +121,9 @@
   .ledger-card{
     background:#fff; border:1px solid var(--line); border-radius:10px;
     padding:28px 30px; box-shadow:0 24px 48px -28px rgba(16,34,64,0.28);
+    display:flex; align-items:center; justify-content:center;
   }
+  .ledger-card svg{width:100%; max-width:320px; height:auto; display:block;}
   .ledger-card .cap{
     font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft);
     text-transform:uppercase; letter-spacing:0.08em; margin-bottom:18px; display:block;
@@ -271,7 +273,7 @@
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Bookkeeping with an edge</span>
-      <h1>Give your business the <em>AD-Vantage.</em></h1>
+      <h1>Bookkeeping that gives your business <em>the edge.</em></h1>
       <p class="lede">Monthly bookkeeping, clean-up, and payroll support built for owners who'd rather run their business than chase receipts. QuickBooks-certified, detail-obsessed, and always one call away.</p>
       <div class="btn-row">
         <a class="btn-primary" href="#contact">Book a free consult</a>
@@ -279,14 +281,18 @@
       </div>
     </div>
     <div class="ledger-card">
-      <span class="cap">This month, at a glance</span>
-      <div class="ledger-row"><span>Accounts reconciled</span><span class="amt">12 / 12</span></div>
-      <div class="ledger-row"><span>Invoices coded</span><span class="amt">148</span></div>
-      <div class="ledger-row"><span>Reports delivered</span><span class="amt">On time</span></div>
-      <div class="balance-bar">
-        <span class="label">Books balanced</span>
-        <span class="balance-pill"><span class="dot"></span>Debits = Credits</span>
-      </div>
+      <svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decorative ledger illustration">
+        <rect x="18" y="14" width="170" height="192" rx="8" fill="#fff" stroke="var(--line)" stroke-width="2"/>
+        <rect x="34" y="34" width="170" height="192" rx="8" fill="var(--powder-light)" stroke="var(--line)" stroke-width="2"/>
+        <line x1="52" y1="66" x2="182" y2="66" stroke="var(--powder)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="52" y1="90" x2="182" y2="90" stroke="var(--powder)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="52" y1="114" x2="150" y2="114" stroke="var(--powder)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="52" y1="138" x2="170" y2="138" stroke="var(--powder)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="52" y1="162" x2="130" y2="162" stroke="var(--powder)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="52" y1="186" x2="182" y2="186" stroke="var(--navy)" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="205" cy="185" r="34" fill="var(--green)"/>
+        <path d="M190 185 L200 195 L222 172" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
   </div>
 </section>
@@ -365,35 +371,12 @@
       <img src="logo-icon.png" alt="Vantage Books icon" class="about-logo-icon">
     </div>
     <div class="about-copy">
-      <p>"I built AD Vantage Books because a business only has the advantage when its numbers are right — and someone actually keeping an eye on them."</p>
-      <p>AD Vantage Books is a one-person bookkeeping practice built for small businesses and non-profits. I work directly with each client — no hand-offs, no call centers, just someone who knows your numbers.</p>
+      <p>"I built Vantage Books because a business only has the advantage when its numbers are right — and someone actually keeping an eye on them."</p>
+      <p>Vantage Books is a one-person bookkeeping practice built for small businesses and non-profits. I work directly with each client — no hand-offs, no call centers, just someone who knows your numbers.</p>
       <div class="creds">
-        <div>QuickBooks<span>ProAdvisor Certified</span></div>
-        <div>Response time<span>Under 24 hours</span></div>
+        <div>QuickBooks<span>QBO Certified</span></div>
+        <div>Response time<span>Within 48 hours</span></div>
         <div>Clients<span>Small business &amp; non-profit</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="testimonials">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Client notes</span>
-      <h2>What it's like to hand off the books.</h2>
-    </div>
-    <div class="t-grid">
-      <div class="t-card">
-        <p>"I finally stopped dreading tax season. Every report shows up on time, and I actually understand my numbers now."</p>
-        <div class="t-who">Owner, Local Retail Shop<span>Client since 2023</span></div>
-      </div>
-      <div class="t-card">
-        <p>"Took over a year of messy books and had everything reconciled within a month. Genuinely a relief."</p>
-        <div class="t-who">Founder, Design Studio<span>Client since 2024</span></div>
-      </div>
-      <div class="t-card">
-        <p>"Payroll runs itself now. I don't think about it, which is exactly the point."</p>
-        <div class="t-who">Director, Non-Profit<span>Client since 2022</span></div>
       </div>
     </div>
   </div>
@@ -403,7 +386,7 @@
   <div class="wrap">
     <h2>Let's get your books in order.</h2>
     <p>Free 30-minute discovery call — no pressure, just a plan for where your books stand and what's next.</p>
-    <a class="btn-primary" href="mailto:hello@advantagebooks.com">Book a free consult</a>
+    <a class="btn-primary" href="mailto:adavis@advantagebooksct.com">Book a free consult</a>
   </div>
 </section>
 
@@ -419,7 +402,7 @@
     </ul>
   </div>
   <div class="wrap">
-    <p class="fine">© 2026 AD Vantage Books. Replace this template's placeholder contact details, credentials, and testimonials with your own before publishing.</p>
+    <p class="fine">© 2026 AD Vantage Bookkeeping LLC. All rights reserved.</p>
   </div>
 </footer>
 
